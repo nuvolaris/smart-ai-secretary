@@ -1,7 +1,12 @@
 # smart-ai-secretary
 
-An intelligent secretary for showcase site, which notifies you when someone wants to contact you or is interested in your products
+An intelligent secretary for showcase site, which notifies you when someone wants to contact you or is interested in your products. 
 
+Sure, here's a corrected version:
+
+## Before starting
+
+Please, before running, go to src/lib/service.openai.ts and set your token on line 3.
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:

@@ -8,9 +8,6 @@ export default {
       primary: "#1b81a5",
       secondary: "#ffa944",
     },
-    fontFamily: {
-      arista: ["Courier New", "monospace"]
-    },
     extend: {}
   },
   plugins: []

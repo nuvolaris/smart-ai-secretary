@@ -32,6 +32,10 @@
 		</div>
 	</div>
 	<div
-		class="relative bg-[url('$lib/assets/logo2.png')] bg-cover bg-center bg-no-repeat w-full h-[70vh]"
+		class="relative bg-[url('$lib/assets/logo2.png')]
+		bg-contain bg-center bg-no-repeat
+		lg:w-full lg:bg-cover
+		sm:bg-cover
+		h-[70vh]"
 	></div>
 </section>

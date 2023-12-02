@@ -8,17 +8,19 @@
 		<div>
 			<a
 				href="/home"
-				class="block rounded px-10 py-3 text-sm font-medium text-white shadow bg-primary sm:w-auto"
+				class="block rounded px-5 py-2 font-bold text-primary
+				bg-slate-500 border sm:w-auto"
 			>
-				Get Started
+				Join the waitlist :)
 			</a>
 		</div>
 		<div class="ml-5">
 			<a
 				href="/home"
-				class="block rounded px-10 py-3 text-sm font-medium text-white bg-primary shadow sm:w-auto"
+				class="block rounded px-5 py-2 text-primary
+				bg-slate-500 border font-bold primary shadow sm:w-auto"
 			>
-				Learn More
+				About us
 			</a>
 		</div>
 	</div>

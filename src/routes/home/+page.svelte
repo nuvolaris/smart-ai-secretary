@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
-	import { gptWelcome } from '$lib/service/openai.ts';
-	import { listAssistants } from '$lib/service/assistantApi.ts';
+	import { gptWelcome } from '$lib/service/openai';
+	import { listAssistants, createThread } from '$lib/service/assistantApi';
 
 	let aiMessage = '';
 	let displayedMessage = '';
@@ -13,12 +13,13 @@
 		}
 	}
 
-	function sleep(ms) {
+	function sleep(ms: number) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	}
 
 	onMount(async () => {
 		await listAssistants();
+		await createThread('hi, where am I?');
 		aiMessage = await gptWelcome();
 		if (aiMessage) {
 			showMessage();

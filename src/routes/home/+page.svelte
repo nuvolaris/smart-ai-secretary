@@ -5,6 +5,7 @@
 
 	let aiMessage = '';
 	let displayedMessage = '';
+	let threadId = '';
 
 	async function showMessage() {
 		for (let i = 0; i < aiMessage.length; i++) {
@@ -19,7 +20,7 @@
 
 	onMount(async () => {
 		await listAssistants();
-		await createThread('hi, where am I?');
+		threadId = (await createThread('hi, where am I?')).id;
 		aiMessage = await gptWelcome();
 		if (aiMessage) {
 			showMessage();

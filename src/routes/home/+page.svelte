@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { gptWelcome } from '$lib/service/openai.ts';
+	import { listAssistants } from '$lib/service/assistantApi.ts';
 
 	let aiMessage = '';
 	let displayedMessage = '';
@@ -17,6 +18,7 @@
 	}
 
 	onMount(async () => {
+		await listAssistants();
 		aiMessage = await gptWelcome();
 		if (aiMessage) {
 			showMessage();

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gptWelcome } from '$lib/service/openai';
-	import { listAssistants, createThread } from '$lib/service/assistantApi';
+	import {
+		listAssistants,
+		createThread,
+		runThread,
+		listThreadMessages
+	} from '$lib/service/assistantApi';
 
 	let aiMessage = '';
 	let displayedMessage = '';
@@ -22,6 +27,7 @@
 		await listAssistants();
 		threadId = (await createThread('hi, where am I?')).id;
 		aiMessage = await gptWelcome();
+
 		if (aiMessage) {
 			showMessage();
 		}
@@ -43,3 +49,5 @@
 		<div class="h-32 border rounded-lg bg-gray-200 lg:col-span-2"></div>
 	</div>
 {/if}
+<button on:click={runThread(threadId)}>runThread</button>
+<button on:click={listThreadMessages(threadId)}>listThreadMessages</button>

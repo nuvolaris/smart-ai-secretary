@@ -1,25 +1,19 @@
-import OpenAI from 'openai';
-//import { AssistantsPage } from 'openai/resources/beta/assistants/assistants';
+import type OpenAI from 'openai';
+import {PUBLIC_ASSISTANT_AI_ID} from '$env/static/public'
+
 import type {
 	MessageCreateParams,
 	Run,
 	RunCreateParams,
 	Thread,
 	ThreadCreateParams,
-	ThreadMessage,
-	ThreadMessagesPage
+	ThreadMessage
 } from 'openai/resources/beta/threads';
 
-const key = 'here';
-const openai = new OpenAI({
-	organization: 'org-ZmZepTrcIzLi3cpzcue5SCkV',
-	apiKey: key,
-	dangerouslyAllowBrowser: true
-});
 
-const ASSISTANT_ID = 'here';
+const ASSISTANT_ID = PUBLIC_ASSISTANT_AI_ID;
 
-export async function listAssistants() {
+export async function listAssistants(openai: OpenAI) {
 	try {
 		console.log('going to call: list assistants');
 		const responseAss = await openai.beta.assistants.list();
@@ -30,7 +24,7 @@ export async function listAssistants() {
 		throw error;
 	}
 }
-export async function createThread(message: string): Promise<Thread> {
+export async function createThread(message: string, openai: OpenAI): Promise<Thread> {
 	try {
 		let body: ThreadCreateParams = {
 			messages: [
@@ -53,7 +47,8 @@ export async function createThread(message: string): Promise<Thread> {
 
 export async function postMessageOnThread(
 	message: string,
-	threadId: string
+	threadId: string,
+	openai: OpenAI
 ): Promise<ThreadMessage> {
 	try {
 		let body: MessageCreateParams = {
@@ -71,7 +66,7 @@ export async function postMessageOnThread(
 	}
 }
 
-export async function runThread(threadId: string): Promise<Run> {
+export async function runThread(threadId: string, openai: OpenAI): Promise<Run> {
 	try {
 		let body: RunCreateParams = {
 			assistant_id: ASSISTANT_ID
@@ -87,7 +82,7 @@ export async function runThread(threadId: string): Promise<Run> {
 	}
 }
 
-export async function listThreadMessages(threadId: string): Promise<ThreadMessage[]> {
+export async function listThreadMessages(threadId: string, openai: OpenAI): Promise<ThreadMessage[]> {
 	try {
 		let body: RunCreateParams = {
 			assistant_id: ASSISTANT_ID

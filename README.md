@@ -2,11 +2,10 @@
 
 An intelligent secretary for showcase site, which notifies you when someone wants to contact you or is interested in your products. 
 
-Sure, here's a corrected version:
-
 ## Before starting
+Please, before starting, make a copy of `.env.example` file, insert there your envs and then rename that file as `.env`. 
 
-Please, before running, go to src/lib/service.openai.ts and set your token on line 3.
+Now your project is ready to start!
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:

@@ -13,13 +13,14 @@ const openAIRequest = {
 	]
 };
 
-const headers = {
-	Authorization: 'Bearer ' + token,
-	'Content-Type': 'application/json'
-};
 
-export async function gptWelcome() {
+
+export async function gptWelcome(token : string) {
 	try {
+		const headers = {
+			Authorization: 'Bearer ' + token,
+			'Content-Type': 'application/json'
+		};
 		const response = await axios.post('https://api.openai.com/v1/chat/completions', openAIRequest, {
 			headers
 		});

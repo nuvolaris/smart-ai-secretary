@@ -7,10 +7,20 @@
 		runThread,
 		listThreadMessages
 	} from '$lib/service/assistantApi';
-
+	import OpenAI from 'openai';
+	export let data: {
+		apiKey: string;
+		openAiToken: string;
+	};
 	let aiMessage = '';
 	let displayedMessage = '';
 	let threadId = '';
+
+	let openai: OpenAI = new OpenAI({
+		organization: 'org-ZmZepTrcIzLi3cpzcue5SCkV',
+		apiKey: data.apiKey,
+		dangerouslyAllowBrowser: true
+	});
 
 	async function showMessage() {
 		for (let i = 0; i < aiMessage.length; i++) {
@@ -24,9 +34,9 @@
 	}
 
 	onMount(async () => {
-		await listAssistants();
-		threadId = (await createThread('hi, where am I?')).id;
-		aiMessage = await gptWelcome();
+		await listAssistants(openai);
+		threadId = (await createThread('hi, where am I?', openai)).id;
+		aiMessage = await gptWelcome(data.openAiToken);
 
 		if (aiMessage) {
 			showMessage();
@@ -49,5 +59,5 @@
 		<div class="h-32 border rounded-lg bg-gray-200 lg:col-span-2"></div>
 	</div>
 {/if}
-<button on:click={runThread(threadId)}>runThread</button>
-<button on:click={listThreadMessages(threadId)}>listThreadMessages</button>
+<button on:click={runThread(threadId, openai)}>runThread</button>
+<button on:click={listThreadMessages(threadId, openai)}>listThreadMessages</button>

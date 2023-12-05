@@ -13,9 +13,7 @@ const openAIRequest = {
 	]
 };
 
-
-
-export async function gptWelcome(token : string) {
+export async function gptWelcome(token: string) {
 	try {
 		const headers = {
 			Authorization: 'Bearer ' + token,

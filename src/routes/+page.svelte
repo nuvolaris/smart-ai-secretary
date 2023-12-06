@@ -8,8 +8,8 @@
 		<div>
 			<a
 				href="/home"
-				class="block rounded px-5 py-2 font-bold text-primary
-				border sm:w-auto"
+				class="block border rounded px-3 py-2 font-bold text-primary
+				border sm:w-auto hover:bg-primary hover:text-white"
 			>
 				Join the waitlist :)
 			</a>
@@ -17,8 +17,8 @@
 		<div class="ml-5">
 			<a
 				href="/home"
-				class="block rounded px-5 py-2 text-primary
-				border font-bold primary shadow sm:w-auto"
+				class="block px-3 py-2 text-primary
+				border rounded font-bold primary shadow sm:w-auto hover:bg-primary hover:text-white"
 			>
 				About us
 			</a>

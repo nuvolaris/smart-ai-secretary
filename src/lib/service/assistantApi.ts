@@ -59,9 +59,7 @@ export async function postMessageOnThread(
 			role: 'user'
 		};
 
-		console.log('going to call: post message on thread');
 		const createThreadResp = await openai.beta.threads.messages.create(threadId, body);
-		console.log(createThreadResp);
 		return createThreadResp;
 	} catch (error) {
 		console.error('Error creating message on thread:', error);
@@ -74,10 +72,7 @@ export async function runThread(threadId: string, openai: OpenAI): Promise<Run> 
 		let body: RunCreateParams = {
 			assistant_id: ASSISTANT_ID
 		};
-
-		console.log('going to call: run thread');
 		const runThreadResp = await openai.beta.threads.runs.create(threadId, body);
-		console.log(runThreadResp);
 		return runThreadResp;
 	} catch (error) {
 		console.error('Error running thread:', error);
@@ -91,10 +86,11 @@ export async function listLastAssistantThreadMessages(
 ): Promise<MessageContentText> {
 	try {
 		const response = await openai.beta.threads.messages.list(threadId);
+		
+		const allMessages = response.data;
+		console.log("ALL MESS", allMessages);
 		const messages = response.data.filter((element) => element.role === 'assistant');
-
-		console.log('MESSAGES', messages);
-		const lastMessage = messages[messages.length - 1];
+		const lastMessage = messages[0];
 		const textValue = lastMessage.content[0];
 		return textValue as unknown as MessageContentText;
 	} catch (error) {

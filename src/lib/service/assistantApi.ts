@@ -86,9 +86,9 @@ export async function listLastAssistantThreadMessages(
 ): Promise<MessageContentText> {
 	try {
 		const response = await openai.beta.threads.messages.list(threadId);
-		
+
 		const allMessages = response.data;
-		console.log("ALL MESS", allMessages);
+		console.log('ALL MESS', allMessages);
 		const messages = response.data.filter((element) => element.role === 'assistant');
 		const lastMessage = messages[0];
 		const textValue = lastMessage.content[0];

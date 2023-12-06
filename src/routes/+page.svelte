@@ -9,7 +9,7 @@
 			<a
 				href="/home"
 				class="block rounded px-5 py-2 font-bold text-primary
-				bg-slate-500 border sm:w-auto"
+				border sm:w-auto"
 			>
 				Join the waitlist :)
 			</a>
@@ -18,7 +18,7 @@
 			<a
 				href="/home"
 				class="block rounded px-5 py-2 text-primary
-				bg-slate-500 border font-bold primary shadow sm:w-auto"
+				border font-bold primary shadow sm:w-auto"
 			>
 				About us
 			</a>

@@ -88,8 +88,8 @@
 	});
 </script>
 
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border m-5 p-5">
-	<div class="h-50 border rounded-lg bg-gray-200">
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border rounded m-5 p-5">
+	<div class="h-50 border border-primary rounded bg-slate-200 shadow-md p-2">
 		{#if aiMessage.length <= 0 || isLoading}
 			<div class="flex justify-center items-center h-30 p-10">
 				<div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
@@ -102,20 +102,20 @@
 	<div>
 		<label for="askSomething" class="sr-only">Ask something to this model...</label>
 
-		<div class="overflow-hidden rounded-lg shadow-sm">
+		<div class=" border border-primary rounded shadow-lg p-2">
 			<textarea
 				id="askSomething"
-				class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm"
-				rows="4"
+				class="w-full resize-none border-none align-top sm:text-sm"
+				rows="3"
 				placeholder="Ask something to this model..."
 				bind:value={userMessage}
 			/>
 
-			<div class="flex items-center justify-end gap-2 bg-white p-5">
+			<div class="flex items-center justify-end gap-2 bg-white pt-2">
 				{#if !isLoading}
 					<button
 						type="button"
-						class="rounded bg-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
+						class="rounded bg-light px-3 py-1.5 text-sm font-medium text-white hover:bg-primary"
 						on:click={postMessage}
 					>
 						Submit
@@ -123,7 +123,7 @@
 				{:else}
 					<button
 						type="button"
-						class="rounded bg-gray px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
+						class="rounded bg-slate-200 px-3 py-1.5 text-sm font-medium text-white"
 					>
 						Submit
 					</button>

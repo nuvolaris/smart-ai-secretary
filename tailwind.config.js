@@ -1,14 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-import { vitePreprocess } from '@sveltejs/kit/vite';
 
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    colors: {
-      primary: "#1b81a5",
-      secondary: "#ffa944",
+    extend: {
+      colors: {
+        primary: "#1b81a5",
+        secondary: "#ffa944",
+        light:"#a0d8ea"
+      },
     },
-    extend: {}
   },
   plugins: []
 };

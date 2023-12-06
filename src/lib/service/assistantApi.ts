@@ -85,7 +85,7 @@ export async function runThread(threadId: string, openai: OpenAI): Promise<Run> 
 	}
 }
 
-export async function listThreadMessages(
+export async function listLastAssistantThreadMessages(
 	threadId: string,
 	openai: OpenAI
 ): Promise<MessageContentText> {

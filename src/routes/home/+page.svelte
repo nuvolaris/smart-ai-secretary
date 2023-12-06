@@ -2,10 +2,9 @@
 	import { onMount } from 'svelte';
 	import { gptWelcome } from '$lib/service/openai';
 	import {
-		listAssistants,
 		createThread,
 		runThread,
-		listThreadMessages,
+		listLastAssistantThreadMessages,
 		postMessageOnThread
 	} from '$lib/service/assistantApi';
 	import OpenAI from 'openai';

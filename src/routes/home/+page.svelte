@@ -45,7 +45,7 @@
 	}
 
 	async function listLastAimessage() {
-		const result = await listThreadMessages(threadId, openai);
+		const result = await listLastAssistantThreadMessages(threadId, openai);
 		const aiMessageNew = result?.text?.value;
 		if (aiMessageNew.length > 0) {
 			aiMessage = aiMessageNew;

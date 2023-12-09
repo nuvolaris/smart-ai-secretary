@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gptWelcome } from '$lib/service/openai';
+	import { sendMessage } from '$lib/service/sendMessage';
 	import {
 		createThread,
 		runThread,
@@ -58,10 +59,8 @@
 
 	async function postMessage() {
 		if (regexEmail.test(userMessage)) {
-			console.log('user email ok');
-			var email = userMessage.match(regexEmail);
-			console.log('email is', email);
-			//send user email to nuvolaris.app
+			//var email = userMessage.match(regexEmail);
+			sendMessage('someone send this message to you on mastrogpt: ' + userMessage);
 		}
 
 		isLoading = true;

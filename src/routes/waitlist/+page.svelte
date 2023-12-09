@@ -22,6 +22,9 @@
 	let isLoading = false;
 
 	let userMessage: string;
+	var regexEmail = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+
+	// Testa se la stringa contiene almeno un indirizzo email
 
 	function handleKeyPress(event: { key: string }) {
 		if (event.key === 'Enter') {
@@ -54,6 +57,13 @@
 	 */
 
 	async function postMessage() {
+		if (regexEmail.test(userMessage)) {
+			console.log('user email ok');
+			var email = userMessage.match(regexEmail);
+			console.log('email is', email);
+			//send user email to nuvolaris.app
+		}
+
 		isLoading = true;
 		if (threadId.length > 0) {
 			await postMessageOnThread(userMessage, threadId, openai);

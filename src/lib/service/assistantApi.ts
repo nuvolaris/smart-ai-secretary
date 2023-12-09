@@ -91,11 +91,10 @@ export async function listLastAssistantThreadMessages(
 		console.log('ALL MESS', allMessages);
 		const messages = response.data.filter((element) => element.role === 'assistant');
 		const lastMessage = messages[0];
-		if(lastMessage.content) {
+		if (lastMessage.content) {
 			const textValue = lastMessage.content[0];
 			return textValue as unknown as MessageContentText;
-		}
-		else return listLastAssistantThreadMessages(threadId, openai);
+		} else return listLastAssistantThreadMessages(threadId, openai);
 	} catch (error) {
 		console.error('Error running thread:', error);
 		throw error;

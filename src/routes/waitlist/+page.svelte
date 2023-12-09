@@ -23,6 +23,12 @@
 
 	let userMessage: string;
 
+	function handleKeyPress(event: { key: string }) {
+		if (event.key === 'Enter') {
+			postMessage();
+		}
+	}
+
 	/**
 	 * Functions util to show text with real effect
 	 */
@@ -43,11 +49,15 @@
 		dangerouslyAllowBrowser: true
 	});
 
+	/**
+	 * OpenAI calls and logic
+	 */
+
 	async function postMessage() {
 		isLoading = true;
 		if (threadId.length > 0) {
 			await postMessageOnThread(userMessage, threadId, openai);
-			await sleep(1000);
+			await sleep(300);
 			await runThread(threadId, openai);
 			listLastAimessage();
 		}
@@ -110,6 +120,7 @@
 				rows="3"
 				placeholder="Ask something to this model..."
 				bind:value={userMessage}
+				on:keypress={handleKeyPress}
 			/>
 
 			<div class="flex items-center justify-end gap-2 bg-white pt-2">

@@ -104,6 +104,7 @@
 
 		<div class=" border border-primary rounded shadow-lg p-2">
 			<textarea
+				maxlength="200"
 				id="askSomething"
 				class="w-full resize-none border-none align-top sm:text-sm"
 				rows="3"

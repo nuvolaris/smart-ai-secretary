@@ -63,15 +63,15 @@
 
 		<div class="mt-2 border-t border-gray-100 pt-2">
 			<div class="sm:flex sm:items-center sm:justify-between">
-				<ul class="flex flex-wrap gap-4 text-xs">
+				<ul class="flex flex-wrap gap-4">
 					<li>
-						<a href="/home" class="text-primary font-extrabold transition hover:opacity-75">
+						<span class="text-primary font-bold transition hover:opacity-75">
 							Terms & Conditions
-						</a>
+						</span>
 					</li>
 				</ul>
 
-				<p class="mt-8 text-m text-primary font-extrabold sm:mt-0">
+				<p class="mt-8 text-primary font-bold hover:opacity-75 sm:mt-0">
 					&copy; 2023. Nuvolaris Inc. All rights reserved.
 				</p>
 			</div>

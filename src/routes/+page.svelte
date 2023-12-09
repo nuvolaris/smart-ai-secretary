@@ -14,7 +14,7 @@
 				Join the waitlist
 			</a>
 		</div>
-		<div class="ml-5">
+		<!-- <div class="ml-5">
 			<a
 				href="/waitlist"
 				class="block px-3 py-2 text-primary
@@ -22,7 +22,7 @@
 			>
 				About us
 			</a>
-		</div>
+		</div> -->
 	</div>
 	<div
 		class="relative bg-[url('$lib/assets/logo2.png')]

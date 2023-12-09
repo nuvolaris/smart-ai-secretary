@@ -118,7 +118,7 @@
 				id="askSomething"
 				class="w-full resize-none border-none align-top sm:text-sm"
 				rows="3"
-				placeholder="Ask something to this model..."
+				placeholder="Pose a question or provide your email to join our waitlist"
 				bind:value={userMessage}
 				on:keypress={handleKeyPress}
 			/>

@@ -12,6 +12,7 @@
 	export let data: {
 		apiKey: string;
 		openAiToken: string;
+		urlSendMessage: string;
 	};
 
 	let maxCount = 0;
@@ -59,8 +60,14 @@
 
 	async function postMessage() {
 		if (regexEmail.test(userMessage)) {
-			//var email = userMessage.match(regexEmail);
-			sendMessage('someone send this message to you on mastrogpt: ' + userMessage);
+			try {
+				sendMessage(
+					'someone send this message to you on mastrogpt: ' + userMessage,
+					data.urlSendMessage
+				);
+			} catch (error) {
+				console.log('Error while sending message', error);
+			}
 		}
 
 		isLoading = true;

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://nuvolaris.app/api/v1/web/apiga/slack/slack';
-
-export async function sendMessage(userMessage: string) {
+export async function sendMessage(userMessage: string, url: string) {
     const headers = {
         'Content-Type': 'application/json',
       };
@@ -12,9 +10,9 @@ export async function sendMessage(userMessage: string) {
 
     axios.post(url, data, { headers })
         .then(response => {
-    console.log('Risposta:', response.data);
+            console.log(response.status)
     })
         .catch(error => {
-    console.error('Errore nella richiesta:', error.message);
+            console.error(error);
     });
 }

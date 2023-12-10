@@ -13,6 +13,7 @@
 		apiKey: string;
 		openAiToken: string;
 		urlSendMessage: string;
+		organization: string;
 	};
 
 	let maxCount = 0;
@@ -49,7 +50,7 @@
 	}
 
 	let openai: OpenAI = new OpenAI({
-		organization: 'org-ZmZepTrcIzLi3cpzcue5SCkV',
+		organization: data.organization,
 		apiKey: data.apiKey,
 		dangerouslyAllowBrowser: true
 	});

@@ -1,6 +1,11 @@
 # smart-ai-secretary
 
-An intelligent secretary for showcase site, which notifies you when someone wants to contact you or is interested in your products
+An intelligent secretary for showcase site, which notifies you when someone wants to contact you or is interested in your products. 
+
+## Before starting
+Please, before starting, make a copy of the `.env.example` file, insert your environment variables there, and then rename that file as `.env`.
+
+Note: `URL_SEND_MESSAGE` is the variable where you can save a URL if you need to receive some user data (in this case, the user's email). The user's message will be sent in the payload as the `userMessage` variable.
 
 ## Developing
 

@@ -47,8 +47,8 @@
 			</li>
 		</ol>
 	</nav>
-	<h1 class="text-7xl text-center text-primary font-extrabold mt-5">
+	<h1 class="text-4xl md:text-7xl text-center text-primary font-extrabold mt-5">
 		MASTROGPT.com
-		<p class="block font-extrabol text-primary text-3xl">improve your creativity</p>
+		<p class="block font-extrabol text-primary text-xl md:text-3xl">improve your creativity</p>
 	</h1>
 </header>

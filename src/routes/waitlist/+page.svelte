@@ -119,8 +119,8 @@
 <div class="text-center">
 	<Divider />
 	<div class="text-xl text-primary font-bold text-center mt-2">
-		🎅 Welcome. Here, you can pose any question <br />
-		to our ai secretary or insert your email to join our waitlist 👇
+		🎅 Welcome. Here, you can ask any question <br />
+		to our AI secretary or insert your email to join our waitlist 👇
 	</div>
 
 	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border rounded m-5 p-5">

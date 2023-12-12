@@ -116,7 +116,7 @@
 	});
 </script>
 
-<div class="text-center">
+<div>
 	<Divider />
 	<div class="text-xl text-primary font-bold text-center mt-2">
 		🎅 Welcome. Here, you can ask any question <br />
@@ -124,7 +124,7 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border rounded m-5 p-5">
-		<div class="h-50 border border-primary rounded bg-slate-200 shadow-md p-2 w-full text-xl">
+		<div class="h-50 border border-primary rounded bg-slate-200 shadow-md p-2">
 			{#if aiMessage.length <= 0 || isLoading}
 				<div class="flex justify-center items-center h-30 p-10">
 					<div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>

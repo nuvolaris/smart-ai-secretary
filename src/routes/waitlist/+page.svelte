@@ -119,7 +119,7 @@
 <div>
 	<Divider />
 	<div class="text-xl text-primary font-bold text-center mt-2">
-		🎅 Welcome. Here, you can ask any question <br />
+		Welcome. Here, you can ask any question <br />
 		to our AI secretary or insert your email to join our waitlist 👇
 	</div>
 

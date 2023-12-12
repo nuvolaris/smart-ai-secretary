@@ -48,7 +48,7 @@
 		</ol>
 	</nav>
 	<h1 class="text-4xl md:text-7xl text-center text-primary font-extrabold mt-5">
-		MASTROGPT.com
+		🎅🏻MASTROGPT.com
 		<p class="block font-extrabold text-primary text-xl md:text-3xl">improve your creativity</p>
 	</h1>
 </header>

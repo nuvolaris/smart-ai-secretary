@@ -1,4 +1,12 @@
-import { API_KEY_ASSISTANT_AI, OPENAI_TOKEN, URL_SEND_MESSAGE, ORGANIZATION } from '$env/static/private';
+import {
+	API_KEY_ASSISTANT_AI,
+	OPENAI_TOKEN,
+	URL_SEND_MESSAGE,
+	ORGANIZATION
+} from '$env/static/private';
+
+export const prerender = true;
+export const ssr = true;
 
 export async function load() {
 	return {
@@ -8,3 +16,5 @@ export async function load() {
 		organization: ORGANIZATION
 	};
 }
+
+

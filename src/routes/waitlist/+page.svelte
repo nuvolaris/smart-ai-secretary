@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { gptWelcome } from '$lib/service/openai';
 	import { sendMessage } from '$lib/service/sendMessage';
 	import {
 		createThread,
@@ -9,6 +8,7 @@
 		postMessageOnThread
 	} from '$lib/service/assistantApi';
 	import OpenAI from 'openai';
+	import Divider from '$lib/components/Divider.svelte';
 	export let data: {
 		apiKey: string;
 		openAiToken: string;
@@ -108,55 +108,64 @@
 
 	onMount(async () => {
 		threadId = (await createThread('', openai)).id;
-		aiMessage = await gptWelcome(data.openAiToken);
+		aiMessage =
+			"Welcome to MastroGPT.com. I'm here to assist you and provide all the information you need. If everything is clear, please enter your email and click on submit to join our waitlist! Otherwise, feel free to ask anything!";
 		if (aiMessage) {
 			showMessage();
 		}
 	});
 </script>
 
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border rounded m-5 p-5">
-	<div class="h-50 border border-primary rounded bg-slate-200 shadow-md p-2">
-		{#if aiMessage.length <= 0 || isLoading}
-			<div class="flex justify-center items-center h-30 p-10">
-				<div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
-			</div>
-		{:else}
-			{displayedMessage}
-		{/if}
+<div>
+	<Divider />
+	<div class="text-xl text-primary font-bold text-center mt-2">
+		Welcome. Here, you can ask any question <br />
+		to our AI secretary or insert your email to join our waitlist 👇
 	</div>
 
-	<div>
-		<label for="askSomething" class="sr-only">Ask something to this model...</label>
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 border-primary lg:gap-8 border rounded m-5 p-5">
+		<div class="h-50 border border-primary rounded bg-slate-200 shadow-md p-2">
+			{#if aiMessage.length <= 0 || isLoading}
+				<div class="flex justify-center items-center h-30 p-10">
+					<div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
+				</div>
+			{:else}
+				{displayedMessage}
+			{/if}
+		</div>
 
-		<div class=" border border-primary rounded shadow-lg p-2">
-			<textarea
-				maxlength="200"
-				id="askSomething"
-				class="w-full resize-none border-none align-top sm:text-sm"
-				rows="3"
-				placeholder="Pose a question or provide your email to join our waitlist"
-				bind:value={userMessage}
-				on:keypress={handleKeyPress}
-			/>
+		<div>
+			<label for="askSomething" class="sr-only">Ask something to this model...</label>
 
-			<div class="flex items-center justify-end gap-2 bg-white pt-2">
-				{#if !isLoading}
-					<button
-						type="button"
-						class="rounded bg-light px-3 py-1.5 text-sm font-medium text-white hover:bg-primary"
-						on:click={postMessage}
-					>
-						Submit
-					</button>
-				{:else}
-					<button
-						type="button"
-						class="rounded bg-slate-200 px-3 py-1.5 text-sm font-medium text-white"
-					>
-						Submit
-					</button>
-				{/if}
+			<div class="border border-primary rounded shadow-lg p-2">
+				<textarea
+					maxlength="200"
+					id="askSomething"
+					class="w-full border-none text-xl"
+					rows="3"
+					placeholder="Pose a question or simply put your email here to join our waitlist!"
+					bind:value={userMessage}
+					on:keypress={handleKeyPress}
+				/>
+
+				<div class="flex items-center justify-end gap-2 bg-white pt-2">
+					{#if !isLoading}
+						<button
+							type="button"
+							class="rounded bg-light px-3 py-1.5 text-xl font-medium text-white hover:bg-primary"
+							on:click={postMessage}
+						>
+							Submit
+						</button>
+					{:else}
+						<button
+							type="button"
+							class="rounded bg-slate-200 px-3 py-1.5 text-xl font-medium text-white"
+						>
+							Submit
+						</button>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>

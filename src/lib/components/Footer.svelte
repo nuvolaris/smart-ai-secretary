@@ -54,10 +54,5 @@
 				</li>
 			</ul>
 		</div>
-		<div>
-			<p class="mt-8 text-primary text-right font-bold hover:opacity-75 sm:mt-0">
-				&copy; 2023. Nuvolaris Inc. All rights reserved.
-			</p>
-		</div>
 	</div>
 </footer>

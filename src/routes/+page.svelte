@@ -89,7 +89,7 @@
 			location.reload();
 		}
 
-		await sleep(1000);
+		await sleep(1500);
 		const result = await listLastAssistantThreadMessages(threadId, openai);
 		const aiNewMessage = result?.text?.value;
 		if (aiNewMessage.length > 0) {

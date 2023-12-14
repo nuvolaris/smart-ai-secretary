@@ -22,18 +22,16 @@
 		organization: string;
 	};
 
-	let maxCount = 0;
+	let counter = 0;
 
 	let aiMessage = '';
 	let displayedMessage = '';
 	let threadId = '';
 
-	let isLoading = false;
+	let isLoading = true;
 
 	let userMessage: string;
 	var regexEmail = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
-
-	// Testa se la stringa contiene almeno un indirizzo email
 
 	function handleKeyPress(event: { key: string }) {
 		if (event.key === 'Enter') {
@@ -66,6 +64,7 @@
 	 */
 
 	async function postMessage() {
+		isLoading = true;
 		if (regexEmail.test(userMessage)) {
 			try {
 				sendMessage(
@@ -77,7 +76,7 @@
 			}
 		}
 
-		isLoading = true;
+		
 		if (threadId.length > 0) {
 			await postMessageOnThread(userMessage, threadId, openai);
 			await sleep(300);
@@ -87,33 +86,47 @@
 	}
 
 	async function listLastAimessage() {
-		maxCount += 1;
-		if (maxCount > 9) {
-			aiMessage = 'Sorry, but our model is going to sleep :(';
-			await showMessage();
-			await sleep(5000);
-			location.reload();
-		}
+    try {
+        counter += 1;
+        if (counter > 9) {
+            aiMessage = 'Sorry, but this model is going to sleep :(';
+            await showMessage();
+            await sleep(5000);
+            location.reload();
+        }
 
-		await sleep(1500);
-		const result = await listLastAssistantThreadMessages(threadId, openai);
-		const aiNewMessage = result?.text?.value;
-		if (aiNewMessage.length > 0) {
-			if (aiNewMessage === aiMessage) {
-				await listLastAimessage();
-			} else {
-				aiMessage = aiNewMessage;
-				isLoading = false;
-				maxCount = 0;
-			}
+        await sleep(1500);
+        const result = await listLastAssistantThreadMessages(threadId, openai);
+        const aiNewMessage = result?.text?.value;
+        if (aiNewMessage.length > 0) {
+            if (aiNewMessage === aiMessage) {
+                await listLastAimessage();
+            } else {
+                aiMessage = aiNewMessage;
+                isLoading = false;
+                counter = 0;
+            }
+        } else {
+            await listLastAimessage();
+        }
+        showMessage();
+    } catch (error) {
+		if(counter > 9) {
+        console.error('Error during listLastAimessage:', error);
+        location.reload();
 		} else {
 			await listLastAimessage();
 		}
-		showMessage();
-	}
+    }
+}
+
 
 	onMount(async () => {
 		threadId = (await createThread('', openai)).id;
+		if(threadId) {
+			isLoading = false;
+		}
+		
 		aiMessage =
 			"Welcome to MastroGPT.com. I'm here to assist you and provide all the information you need. If everything is clear, please enter your email and click on submit to join our waitlist! Otherwise, feel free to ask anything!";
 		if (aiMessage) {

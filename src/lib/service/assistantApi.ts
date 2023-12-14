@@ -10,6 +10,7 @@ import type {
 	ThreadCreateParams,
 	ThreadMessage
 } from 'openai/resources/beta/threads';
+import { sleep } from 'openai/core';
 
 const ASSISTANT_ID = PUBLIC_ASSISTANT_AI_ID;
 
@@ -82,21 +83,32 @@ export async function runThread(threadId: string, openai: OpenAI): Promise<Run> 
 
 export async function listLastAssistantThreadMessages(
 	threadId: string,
-	openai: OpenAI
-): Promise<MessageContentText> {
+	openai: OpenAI,
+	maxAttempts: number = 5 
+  ): Promise<MessageContentText> {
 	try {
-		const response = await openai.beta.threads.messages.list(threadId);
-
-		const allMessages = response.data;
-		console.log('ALL MESS', allMessages);
-		const messages = response.data.filter((element) => element.role === 'assistant');
-		const lastMessage = messages[0];
-		if (lastMessage.content) {
-			const textValue = lastMessage.content[0];
-			return textValue as unknown as MessageContentText;
-		} else return listLastAssistantThreadMessages(threadId, openai);
+	  const response = await openai.beta.threads.messages.list(threadId);
+  
+	  const allMessages = response.data;
+	  console.log(allMessages);
+  
+	  const assistantMessages = response.data.filter((message) => message.role === 'assistant');
+	  const lastAssistantMessage = assistantMessages[0];
+  
+	  if (lastAssistantMessage && lastAssistantMessage.content.length > 0) {
+		const textValue = lastAssistantMessage.content[0] as MessageContentText;
+		return textValue;
+	  } else {
+		if (maxAttempts > 0) {
+			await sleep(1000);
+		  return listLastAssistantThreadMessages(threadId, openai, maxAttempts - 1);
+		} else {
+		  throw new Error('Maximum attempts reached. Unable to retrieve assistant message.');
+		}
+	  }
 	} catch (error) {
-		console.error('Error running thread:', error);
-		throw error;
+	  console.error('Error running thread:', error);
+	  throw error; 
 	}
-}
+  }
+  

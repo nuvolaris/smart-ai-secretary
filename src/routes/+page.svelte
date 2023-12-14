@@ -1,3 +1,9 @@
+<svelte:head>
+	<title>MastroGPT</title>
+	<meta name="og:title" content="MastroGPT" />
+</svelte:head>
+
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { sendMessage } from '$lib/service/sendMessage';

@@ -10,6 +10,9 @@ tasks:
     cmds:
     - npm install
 
+  login:
+    - echo "Password is $NUV_PASSWORD"
+    - nuv -login $NUV_HOST $NUV_USER
 
   default:
     - task: build

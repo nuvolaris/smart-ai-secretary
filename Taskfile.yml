@@ -1,0 +1,23 @@
+version: '3'
+
+tasks:
+
+  setup:
+    dir: packages/waitlist
+    cmds:
+    - npm install
+
+
+  default:
+    - task: build
+    - task: deploy
+
+  build:
+    dir: packages/waitlist
+    cmds:
+    - tsc
+
+  deploy:
+    dir: packages
+    cmds: 
+    - nuv -wsk project deploy

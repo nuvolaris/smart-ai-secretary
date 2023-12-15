@@ -1,0 +1,22 @@
+packages:
+  waitlist:
+    inputs:
+      PUBLIC_ASSISTANT_AI_ID: ${PUBLIC_ASSISTANT_AI_ID}
+      ORGANIZATION:  ${ORGANIZATION}
+      API_KEY_ASSISTANT_AI: ${API_KEY_ASSISTANT_AI}
+      OPENAI_TOKEN: ${OPENAI_TOKEN}
+      URL_SEND_MESSAGE: ${URL_SEND_MESSAGE}
+    actions:
+      #echo:
+      #  web: true
+      #  function: waitlist/echo.js
+      createThread:
+        web: true
+        function: waitlist/createThread.js
+      sendMessage:
+        web: true
+        function: waitlist/sendMessage.js
+      listMessages:
+        web: true
+        function: waitlist/listMessages.js
+       
